@@ -29,7 +29,7 @@
 
 <body>
     <!-- Navbar -->
-    <header>
+    <header class="sticky-header">
         <a href="/homepage.html" class="logo"><img src="image/logo web.png" alt=""></a>
         <ul class="navbar">
             <li><a href="#" class="active">Home</a></li>
@@ -291,8 +291,8 @@
             </div>
             <div class="button-artikel-home2">
                 <!-- Manual Next and Prev Buttons -->
-                <button class="manual-prev2"><i class='bx bx-chevron-left' ></i></button>
-                <button class="manual-next2"><i class='bx bx-chevron-right' ></i></button>
+                <button class="manual-prev2"><i class='bx bx-chevron-left'></i></button>
+                <button class="manual-next2"><i class='bx bx-chevron-right'></i></button>
             </div>
         </div>
         <div class="owl-carousel wrapcard-artikel-home2">
@@ -378,7 +378,8 @@
             responsive: {
                 0: { items: 1 },
                 600: { items: 2 },
-                1000: { items: 5 }
+                1000: { items: 3 },
+                1600: { items: 5 }
             }
         });
 
@@ -405,8 +406,8 @@
             responsive: {
                 0: { items: 1 },
                 600: { items: 2 },
-                800: { items: 3 },
-                1000: { items: 5 }
+                1000: { items: 4 },
+                1600: { items: 5 }
             }
         });
 
@@ -439,6 +440,27 @@
     });
 
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.querySelector('header');
+        const scrollThreshold = 20; // Adjust this value based on when you want the header to become sticky
 
+        function updateHeaderSticky() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const isSticky = scrollY > scrollThreshold;
+
+            header.classList.toggle('sticky', isSticky);
+            header.style.position = isSticky ? 'fixed' : 'relative';
+            header.style.background = isSticky ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)';
+            header.style.backdropFilter = isSticky ? 'blur(10px)' : 'none';
+            header.style.backdropFilter = isSticky ? 'blur(10px)' : 'none';
+        }
+
+        window.addEventListener('scroll', updateHeaderSticky);
+
+        // Initial call to set initial state
+        updateHeaderSticky();
+    });
+</script>
 
 </html>
